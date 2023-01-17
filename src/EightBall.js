@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import "./EightBall.css"
+import { chooseRandomMessage } from "./helpers";
 
 const ANSWER_OPTIONS = [
   { msg: "It is certain.", color: "green" },
@@ -23,20 +25,30 @@ const ANSWER_OPTIONS = [
   { msg: "Very doubtful.", color: "red" },
 ];
 
-function EightBall(answers) {
+/**
+ * EightBall: component representing an EightBall, complete with message and
+ * dynamic color.
+ * 
+ * Props:
+ * - answers (list of possible answer/color combinations)
+ * 
+ * State:
+ * - ball (Object { msg: "", color: "" })
+ * 
+ * App -> EightBall
+ */
+function EightBall({ answers=ANSWER_OPTIONS }) {
   const [ball, setBall] = useState({msg: "Think of a question", color: "black"});
 
   function updateBall() {
-    setBall(ANSWER_OPTIONS[0]);
+    setBall(chooseRandomMessage(answers));
   }
 
-  const style = {backgroundColor: ball.color};
-
   return (
-    <div style={style}>
-      <p>{ball.msg}</p>
-
+    <div id="EightBall" style={{backgroundColor: ball.color}} onClick={updateBall}>
+      <p id="EightBall-msg">{ball.msg}</p>
     </div>
   )
-
 }
+
+export default EightBall;

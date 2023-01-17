@@ -1,0 +1,15 @@
+#EightBall {
+    display: flex;
+    width: 10em;
+    height: 10em;
+    margin: 4em;
+    border-radius: 50%;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+#EightBall-msg {
+    color: white;
+    font-weight: bold;
+}
