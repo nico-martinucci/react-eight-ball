@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "./EightBall.css"
 import { chooseRandomMessage } from "./helpers";
 
+// might be worth breaking out into separate file just for length
 const ANSWER_OPTIONS = [
   { msg: "It is certain.", color: "green" },
   { msg: "It is decidedly so.", color: "green" },
@@ -30,7 +31,7 @@ const ANSWER_OPTIONS = [
  * dynamic color.
  * 
  * Props:
- * - answers (list of possible answer/color combinations)
+ * - answers (list of possible answer/color combinations) // incl. data type and example
  * 
  * State:
  * - ball (Object { msg: "", color: "" })
@@ -44,6 +45,7 @@ function EightBall({ answers=ANSWER_OPTIONS }) {
     setBall(chooseRandomMessage(answers));
   }
 
+  // mindful of line length; convention is class name
   return (
     <div id="EightBall" style={{backgroundColor: ball.color}} onClick={updateBall}>
       <p id="EightBall-msg">{ball.msg}</p>
